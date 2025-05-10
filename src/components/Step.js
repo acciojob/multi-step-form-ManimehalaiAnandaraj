@@ -6,6 +6,7 @@ const Step = ({ currentStep, formData, handleChange, nextStep, prevStep }) => {
       {/* Step 1: Personal Info */}
       {currentStep === 1 && (
         <div>
+            <h3>Personal Details</h3>
           <div>
             <label htmlFor="first_name">First Name</label>
             <input
@@ -15,7 +16,9 @@ const Step = ({ currentStep, formData, handleChange, nextStep, prevStep }) => {
               onChange={handleChange}
               required
             />
+            
           </div>
+          <br></br>
           <div>
             <label htmlFor="last_name">Last Name</label>
             <input
@@ -25,6 +28,7 @@ const Step = ({ currentStep, formData, handleChange, nextStep, prevStep }) => {
               onChange={handleChange}
               required
             />
+           
           </div>
         </div>
       )}
@@ -32,6 +36,7 @@ const Step = ({ currentStep, formData, handleChange, nextStep, prevStep }) => {
       {/* Step 2: Car Details */}
       {currentStep === 2 && (
         <div>
+            <h3>Car Details</h3>
           <div>
             <label htmlFor="model">Car Model</label>
             <input
@@ -42,6 +47,7 @@ const Step = ({ currentStep, formData, handleChange, nextStep, prevStep }) => {
               required
             />
           </div>
+           <br></br>
           <div>
             <label htmlFor="car_price">Car Price ($)</label>
             <input
@@ -58,6 +64,7 @@ const Step = ({ currentStep, formData, handleChange, nextStep, prevStep }) => {
       {/* Step 3: Payment Info */}
       {currentStep === 3 && (
         <div>
+            <h3>Payment Details</h3>
           <div>
             <label htmlFor="card_info">Card Number</label>
             <input
@@ -68,6 +75,7 @@ const Step = ({ currentStep, formData, handleChange, nextStep, prevStep }) => {
               required
             />
           </div>
+           <br></br>
           <div>
             <label htmlFor="expiry_date">Expiry Date (MM/YY)</label>
             <input
