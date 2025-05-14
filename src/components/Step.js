@@ -5,7 +5,7 @@ const Step = ({ currentStep, formData, handleChange, nextStep, prevStep }) => {
     <div>
       {/* Step 1: Personal Info */}
       {currentStep === 1 && (
-        <div>
+        <div id='step1'>
             <h3>Personal Details</h3>
           <div>
             <label htmlFor="first_name">First Name</label>
@@ -35,7 +35,7 @@ const Step = ({ currentStep, formData, handleChange, nextStep, prevStep }) => {
 
       {/* Step 2: Car Details */}
       {currentStep === 2 && (
-        <div>
+        <div id='step2'>
             <h3>Car Details</h3>
           <div>
             <label htmlFor="model">Car Model</label>
@@ -63,7 +63,7 @@ const Step = ({ currentStep, formData, handleChange, nextStep, prevStep }) => {
 
       {/* Step 3: Payment Info */}
       {currentStep === 3 && (
-        <div>
+        <div id='step3'>
             <h3>Payment Details</h3>
           <div>
             <label htmlFor="card_info">Card Number</label>
