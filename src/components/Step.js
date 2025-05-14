@@ -68,7 +68,8 @@ const Step = ({ currentStep, formData, handleChange, nextStep, prevStep }) => {
           <div>
             <label htmlFor="card_info">Card Number</label>
             <input
-              type="text"
+              type="number"
+              pattern=".{12,12}"
               id="card_info"
               value={formData.card_info}
               onChange={handleChange}
@@ -79,7 +80,7 @@ const Step = ({ currentStep, formData, handleChange, nextStep, prevStep }) => {
           <div>
             <label htmlFor="expiry_date">Expiry Date (MM/YY)</label>
             <input
-              type="text"
+              type="date"
               id="expiry_date"
               value={formData.expiry_date}
               onChange={handleChange}
