@@ -1,75 +1,105 @@
 import React from 'react';
 
-const Step = ({ currentStep, formData, onFormChange, onNext, onPrev, onSubmit }) => {
+const Step = ({ currentStep, formData, handleChange, nextStep, prevStep }) => {
   return (
     <div>
-      {/* Step 1: First Name and Last Name */}
+      <h3>Personal Details</h3>
+      {/* Step 1: Personal Info */}
+      
       {currentStep === 1 && (
         <div>
-          <input
-            id="first_name"
-            type="text"
-            placeholder="First Name"
-            value={formData.firstName}
-            onChange={(e) => onFormChange('firstName', e.target.value)}
-          />
-          <input
-            id="last_name"
-            type="text"
-            placeholder="Last Name"
-            value={formData.lastName}
-            onChange={(e) => onFormChange('lastName', e.target.value)}
-          />
+          <div>
+            <label htmlFor="first_name">First Name</label>
+            <input
+              type="text"
+              id="first_name"
+              value={formData.first_name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="last_name">Last Name</label>
+            <input
+              type="text"
+              id="last_name"
+              value={formData.last_name}
+              onChange={handleChange}
+              required
+            />
+          </div>
         </div>
       )}
 
-      {/* Step 2: Cat Model and Price */}
+      {/* Step 2: Car Details */}
       {currentStep === 2 && (
         <div>
-          <input
-            id="model"
-            type="text"
-            placeholder="Cat Model"
-            value={formData.model}
-            onChange={(e) => onFormChange('model', e.target.value)}
-          />
-          <input
-            id="car_price"
-            type="number"
-            placeholder="Cat Price"
-            value={formData.carPrice}
-            onChange={(e) => onFormChange('carPrice', e.target.value)}
-          />
+          <h3>Car Details</h3>
+          <div>
+            <label htmlFor="model">Car Model</label>
+            <input
+              type="text"
+              id="model"
+              value={formData.model}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="car_price">Car Price ($)</label>
+            <input
+              type="number"
+              id="car_price"
+              value={formData.car_price}
+              onChange={handleChange}
+              required
+            />
+          </div>
         </div>
       )}
 
-      {/* Step 3: Card Information and Expiry Date */}
+      {/* Step 3: Payment Info */}
       {currentStep === 3 && (
         <div>
-          <input
-            id="card_info"
-            type="text"
-            placeholder="Card Information"
-            value={formData.cardInfo}
-            onChange={(e) => onFormChange('cardInfo', e.target.value)}
-          />
-          <input
-            id="expiry_date"
-            type="text"
-            placeholder="Expiry Date (MM/YY)"
-            value={formData.expiryDate}
-            onChange={(e) => onFormChange('expiryDate', e.target.value)}
-          />
+          <h3>Payment Details</h3>
+          <div>
+            <label htmlFor="card_info">Card Number</label>
+            <input
+              type="text"
+              id="card_info"
+              pattern='[0-9]{12}'
+              value={formData.card_info}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="expiry_date">Expiry Date (MM/YY)</label>
+            <input
+              type="date"
+              id="expiry_date"
+              value={formData.expiry_date}
+              onChange={handleChange}
+              placeholder="MM/YY"
+              required
+            />
+          </div>
         </div>
       )}
 
-      {/* Navigation Buttons */}
-      <div>
-        {currentStep > 1 && <button onClick={onPrev}>Previous</button>}
+      {/* Navigation Controls */}
+      <div style={{ marginTop: '20px' }}>
+        {currentStep > 1 && (
+          <button type="button" onClick={prevStep}>
+            Previous
+          </button>
+        )}
         {currentStep < 3 ? (
-          <button onClick={onNext}>Next</button>
+          <button type="button" onClick={nextStep}>
+            Next
+          </button>
         ) : (
-          <button onClick={onSubmit}>Submit</button>
+          <button type="submit">Submit</button>
         )}
       </div>
     </div>
@@ -77,4 +107,3 @@ const Step = ({ currentStep, formData, onFormChange, onNext, onPrev, onSubmit })
 };
 
 export default Step;
-

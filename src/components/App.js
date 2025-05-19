@@ -1,45 +1,43 @@
+
 import React, { useState } from 'react';
 import Step from './Step';
+import './../styles/App.css'
 
-function App() {
+const App = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
+    first_name: '',
+    last_name: '',
     model: '',
-    carPrice: '',
-    cardInfo: '',
-    expiryDate: '',
+    car_price: '',
+    card_info: '',
+    expiry_date: ''
   });
 
-  const handleNext = () => {
-    if (currentStep < 3) setCurrentStep(currentStep + 1);
+  const nextStep = () => setCurrentStep(prev => Math.min(prev + 1, 3));
+  const prevStep = () => setCurrentStep(prev => Math.max(prev - 1, 1));
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({ ...prev, [id]: value }));
   };
 
-  const handlePrev = () => {
-    if (currentStep > 1) setCurrentStep(currentStep - 1);
-  };
-
-  const handleFormChange = (field, value) => {
-    setFormData({ ...formData, [field]: value });
-  };
-
-  const handleSubmit = () => {
-    alert('Form submitted successfully!\n' + JSON.stringify(formData, null, 2));
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Form Submitted:', formData); // Replace with API call
   };
 
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       <Step
         currentStep={currentStep}
         formData={formData}
-        onFormChange={handleFormChange}
-        onNext={handleNext}
-        onPrev={handlePrev}
-        onSubmit={handleSubmit}
+        handleChange={handleChange}
+        nextStep={nextStep}
+        prevStep={prevStep}
       />
-    </div>
+    </form>
   );
-}
+};
 
 export default App;
